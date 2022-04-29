@@ -68,29 +68,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-    '''
-
-def create_deployment_object():
-    config.load_kube_config()
-    apps_v1 = client.AppsV1Api()
-    dep = apps_v1.list_deployment_for_all_namespaces().items[3]
-    container = client.V1Container(
-        name=dep.spec.template.spec.containers[0].name,
-        image=dep.spec.template.spec.containers[0].image,
-    )
-    template = client.V1PodTemplateSpec(
-        metadata=dep.spec.template.metadata,
-        spec=client.V1PodSpec(containers=[container]),
-    )
-
-    spec = client.V1DeploymentSpec(replicas=3, template=template, selector=dep.spec.selector)
-
-    deployment = client.V1Deployment(
-        api_version="apps/v1",
-        kind="Deployment",
-        metadata=dep.metadata,
-        spec=spec,
-    )
-    return deployment
-'''
